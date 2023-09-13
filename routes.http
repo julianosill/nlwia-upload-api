@@ -23,3 +23,15 @@ Content-Type: application/json
 {
   "prompt": "compilador, computador, dev, código"
 }
+
+###
+
+# @name generate-ai-completion
+POST http://localhost:3333/ai/complete
+Content-Type: application/json
+
+{
+  "videoId": "bf358d0a-6d23-4214-beee-3668a9ac3f43",
+  "temperature": 0.5,
+  "template": "Gere um resumo sucinto da transcrição do vídeo informada a seguir: '''{transcription}'''"
+}
