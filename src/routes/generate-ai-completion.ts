@@ -22,7 +22,7 @@ export async function generateAICompletionRoute(app: FastifyInstance) {
     if (!video.transcription) {
       return reply
         .status(400)
-        .send({ error: 'Video transcription has not generated yet.' })
+        .send({ error: 'Video transcription has not been generated yet.' })
     }
 
     const promptMessage = prompt.replace('{transcription}', video.transcription)
@@ -35,13 +35,12 @@ export async function generateAICompletionRoute(app: FastifyInstance) {
     })
 
     const stream = OpenAIStream(response)
+
     streamToResponse(stream, reply.raw, {
       headers: {
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methos': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
       },
     })
-
-    // return response
   })
 }
